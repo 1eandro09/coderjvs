@@ -74,6 +74,4 @@
                 break;
         }
     }
-
-    // Llamar a la función principal
     ventaDeAutos();
