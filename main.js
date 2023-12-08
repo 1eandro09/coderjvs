@@ -1,55 +1,79 @@
-const auto1 = "Peugeot";
-const auto2 = " Citroen";
-const auto3 = "Chevrolet"; 
-
-alert ("Elegi tu marca preferida de auto \n1. Peugeot\n2. Citroen\n3. Chevrolet");
-
-let elegiTuAuto = parseInt(prompt("Elegi tu marca preferida"))
-
-while (elegiTuAuto > 3){
-        alert ("por favor ingrese un marca valida")
-    elegiTuAuto = parseInt(prompt("ingresar una marca valida"))
-}
-
-if (elegiTuAuto == 1){
-    alert("Gracias por tu solicitud para tu compra de tu" + auto1)
-
-    let peugeot ={
-    marca:'peugeot',
-    modelo: '308',
-    peso: '1100',
-    color: 'negro'
-    
+// Función para obtener la opción del usuario usando prompt
+    function obtenerOpcion() {
+        return prompt("Selecciona una opción:\n1. Ver modelos disponibles\n2. Consultar precio\n3. Comprar auto\n4. Salir");
     }
-    alert('elegiste tu peugeot 308')
-    console.log('peugeot', peugeot)
-}
 
-else if(elegiTuAuto == 2){
-    alert("Gracias por tu solicitud para tu compra de tu" + auto2)
+    // Función principal
+    function ventaDeAutos() {
+        let opcion;
 
-    let citroen = {
-    marca: 'citroen',
-    modelo: 'ds3',
-    peso: '1200',
-    color: 'blanco'
-    
+        // Bucle principal
+        do {
+            // Obtener la opción del usuario
+            opcion = obtenerOpcion();
+
+            // Evaluar la opción utilizando switch
+            switch (opcion) {
+                case '1':
+                    alert("Modelos disponibles:\n1. Peugeot\n2. Bmw\n3. Deportivos");
+                    break;
+
+                case '2':
+                    let modelo = prompt("Ingresa el modelo para consultar el precio:");
+                    consultarPrecio(modelo);
+                    break;
+
+                case '3':
+                    let modeloCompra = prompt("Ingresa el modelo que deseas comprar:");
+                    comprarAuto(modeloCompra);
+                    break;
+
+                case '4':
+                    alert("Gracias por visitar nuestra tienda de autos.");
+                    break;
+
+                default:
+                    alert("Opción no válida. Por favor, elige una opción correcta.");
+                    break;
+            }
+        } while (opcion !== '4');
     }
-    
-    alert('elegiste tu citroen ds3')
-    console.log('citroen', citroen)
-}
 
-else if ( elegiTuAuto == 3){
-    alert("Gracias por tu solicitud para tu compra de tu" + auto3)
+    // Función para consultar el precio
+    function consultarPrecio(modelo) {
+        switch (modelo) {
+            case 'Peugeot':
+                alert("El precio del Peugeot es $20,000.");
+                break;
+            
+            case 'Bmw':
+                alert("El precio del Bmw es $30,000.");
+                break;
 
-    let chevrolet = {
-        marca:'chevrolet',
-        modelo: 'onix',
-        peso: '11800',
-        color: 'plata'
-    
+            case 'Deportivos':
+                alert("El precio del Deportivo es $40,000.");
+                break;
+
+            default:
+                alert("Modelo no reconocido. Por favor, ingresa un modelo válido.");
+                break;
+        }
     }
-    alert('elegiste tu chevrolet onix')
-    console.log('chevrolet', chevrolet)
-}
+
+    // Función para comprar el auto
+    function comprarAuto(modelo) {
+        switch (modelo) {
+            case 'Peugeot':
+            case 'Bmw':
+            case 'Deportivos':
+                alert(`¡Felicidades! Has comprado un ${modelo}. Gracias por tu compra.`);
+                break;
+
+            default:
+                alert("Modelo no reconocido. Por favor, ingresa un modelo válido.");
+                break;
+        }
+    }
+
+    // Llamar a la función principal
+    ventaDeAutos();
